@@ -3,41 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coco Studio - Mobile Games for iOS and Android | Play Now!</title>
+    <title>Coco Studio - Indie Game Studio</title>
     <style>
-        :root {
-            --primary-bg: #0a0a0a;
-            --secondary-bg: #1a1a1a;
-            --accent-color: #00ff88;
-            --text-primary: #ffffff;
-            --text-secondary: #b0b0b0;
-            --card-bg: #252525;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--primary-bg);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
+        :root {
+            --primary-color: #0084ff;
+            --accent-light: #e8f4ff;
         }
 
-        /* Header & Navigation */
+        html[data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f5;
+            --bg-tertiary: #efefef;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --text-tertiary: #999999;
+            --border-color: #e0e0e0;
+            --card-bg: #ffffff;
+            --card-shadow: rgba(0, 0, 0, 0.08);
+        }
+
+        html[data-theme="dark"] {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --bg-tertiary: #252525;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --text-tertiary: #888888;
+            --border-color: #333333;
+            --card-bg: #1a1a1a;
+            --card-shadow: rgba(0, 0, 0, 0.3);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        /* Header */
         header {
-            background: rgba(10, 10, 10, 0.95);
+            background: var(--bg-secondary);
             padding: 1.5rem 2rem;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
         }
 
         nav {
@@ -51,17 +71,7 @@
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
-            color: var(--accent-color);
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .logo-image {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
+            color: var(--primary-color);
         }
 
         nav ul {
@@ -78,86 +88,65 @@
         }
 
             nav a:hover {
-                color: var(--accent-color);
+                color: var(--primary-color);
             }
 
-        .main {
+        .theme-toggle {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+            .theme-toggle:hover {
+                opacity: 0.9;
+                transform: scale(1.05);
+            }
+
+        /* Hero */
+        .hero {
             margin-top: 80px;
             padding: 6rem 2rem;
             text-align: center;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
-            position: relative;
-            overflow: hidden;
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+            transition: all 0.3s ease;
         }
 
-            .main::before {
-                content: '';
-                position: absolute;
-                width: 500px;
-                height: 500px;
-                background: radial-gradient(circle, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
-                top: -250px;
-                right: -250px;
-                animation: pulse 4s ease-in-out infinite;
+            .hero h1 {
+                font-size: 3.5rem;
+                margin-bottom: 1rem;
+                color: var(--text-primary);
             }
 
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-                opacity: 0.5;
+            .hero p {
+                font-size: 1.3rem;
+                color: var(--text-secondary);
+                max-width: 700px;
+                margin: 0 auto 2rem;
             }
-
-            50% {
-                transform: scale(1.1);
-                opacity: 0.8;
-            }
-        }
-
-        .main h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .main p {
-            font-size: 1.3rem;
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            animation: fadeInUp 1s ease 0.2s backwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
 
         .cta-button {
             display: inline-block;
             padding: 1rem 2.5rem;
-            background: var(--accent-color);
-            color: var(--primary-bg);
+            background: var(--primary-color);
+            color: white;
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
             font-size: 1.1rem;
             transition: all 0.3s;
-            animation: fadeInUp 1s ease 0.4s backwards;
         }
 
             .cta-button:hover {
                 transform: translateY(-3px);
-                box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+                box-shadow: 0 10px 30px rgba(0, 132, 255, 0.3);
             }
 
-        /* About Section */
+        /* About */
         .about {
             padding: 6rem 2rem;
             max-width: 1200px;
@@ -168,13 +157,13 @@
             .about h2 {
                 font-size: 2.5rem;
                 margin-bottom: 2rem;
-                color: var(--accent-color);
+                color: var(--primary-color);
             }
 
             .about p {
                 font-size: 1.2rem;
                 color: var(--text-secondary);
-                max-width: 800px;
+                max-width: 900px;
                 margin: 0 auto;
                 line-height: 1.8;
             }
@@ -182,14 +171,15 @@
         /* Games Section */
         .games {
             padding: 6rem 2rem;
-            background: var(--secondary-bg);
+            background: var(--bg-secondary);
+            transition: all 0.3s ease;
         }
 
             .games h2 {
                 text-align: center;
                 font-size: 2.5rem;
                 margin-bottom: 3rem;
-                color: var(--accent-color);
+                color: var(--primary-color);
             }
 
         .games-grid {
@@ -206,11 +196,12 @@
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
+            box-shadow: 0 4px 12px var(--card-shadow);
         }
 
             .game-card:hover {
                 transform: translateY(-10px);
-                box-shadow: 0 15px 40px rgba(0, 255, 136, 0.2);
+                box-shadow: 0 15px 40px rgba(0, 132, 255, 0.2);
             }
 
         .game-image {
@@ -221,6 +212,45 @@
             align-items: center;
             justify-content: center;
             font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-image-1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .game-image-2 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .game-image-3 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .game-image-4 {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .game-image-5 {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+        }
+
+        .game-image-6 {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .game-image::after {
+            content: attr(data-title);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 1rem;
+            font-weight: bold;
+            font-size: 1.2rem;
         }
 
         .game-info {
@@ -230,37 +260,40 @@
             .game-info h3 {
                 font-size: 1.5rem;
                 margin-bottom: 0.5rem;
+                color: var(--text-primary);
             }
 
             .game-info p {
                 color: var(--text-secondary);
                 margin-bottom: 1rem;
+                font-size: 0.95rem;
             }
 
         .platform-badges {
             display: flex;
             gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
         }
 
         .badge {
             padding: 0.3rem 0.8rem;
-            background: rgba(0, 255, 136, 0.2);
-            border: 1px solid var(--accent-color);
+            background: rgba(0, 132, 255, 0.2);
+            border: 1px solid var(--primary-color);
             border-radius: 20px;
             font-size: 0.85rem;
-            color: var(--accent-color);
+            color: var(--primary-color);
         }
 
         .game-links {
             display: flex;
             gap: 1rem;
-            margin-top: 1rem;
         }
 
             .game-links a {
                 padding: 0.5rem 1rem;
-                background: var(--accent-color);
-                color: var(--primary-bg);
+                background: var(--primary-color);
+                color: white;
                 text-decoration: none;
                 border-radius: 5px;
                 font-size: 0.9rem;
@@ -269,11 +302,11 @@
             }
 
                 .game-links a:hover {
-                    background: #00cc6a;
+                    opacity: 0.9;
                     transform: scale(1.05);
                 }
 
-        /* Modal Styles */
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -341,21 +374,22 @@
             justify-content: center;
             transition: all 0.3s;
             z-index: 10;
+            border: none;
         }
 
             .modal-close:hover {
-                background: var(--accent-color);
-                color: var(--primary-bg);
+                background: var(--primary-color);
+                color: white;
                 transform: rotate(90deg);
             }
 
         .modal-header {
             padding: 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid var(--border-color);
         }
 
             .modal-header h2 {
-                color: var(--accent-color);
+                color: var(--primary-color);
                 margin-bottom: 0.5rem;
             }
 
@@ -365,8 +399,8 @@
 
         .modal-tabs {
             display: flex;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            background: var(--secondary-bg);
+            border-bottom: 1px solid var(--border-color);
+            background: var(--bg-secondary);
         }
 
         .modal-tab {
@@ -378,15 +412,17 @@
             font-weight: 500;
             transition: all 0.3s;
             border-bottom: 3px solid transparent;
+            background: none;
+            border: none;
         }
 
             .modal-tab:hover {
-                background: rgba(255, 255, 255, 0.05);
+                background: var(--border-color);
             }
 
             .modal-tab.active {
-                color: var(--accent-color);
-                border-bottom-color: var(--accent-color);
+                color: var(--primary-color);
+                border-bottom-color: var(--primary-color);
             }
 
         .modal-body {
@@ -399,7 +435,6 @@
 
             .tab-content.active {
                 display: block;
-                animation: fadeIn 0.3s ease;
             }
 
         .video-container {
@@ -408,7 +443,7 @@
             height: 0;
             overflow: hidden;
             border-radius: 10px;
-            background: var(--secondary-bg);
+            background: var(--bg-secondary);
         }
 
             .video-container iframe {
@@ -431,6 +466,8 @@
             overflow: hidden;
             cursor: pointer;
             transition: transform 0.3s;
+            background: var(--bg-secondary);
+            height: 200px;
         }
 
             .photo-item:hover {
@@ -439,47 +476,26 @@
 
             .photo-item img {
                 width: 100%;
-                height: 200px;
+                height: 100%;
                 object-fit: cover;
             }
 
-        .info-content {
-            line-height: 1.8;
+        .info-content h3 {
+            color: var(--primary-color);
+            margin: 1rem 0 0.5rem 0;
         }
 
-            .info-content h3 {
-                color: var(--accent-color);
-                margin: 1rem 0 0.5rem 0;
-            }
-
-            .info-content ul {
-                margin: 0.5rem 0;
-                padding-left: 1.5rem;
-            }
-
-            .info-content li {
-                margin: 0.5rem 0;
-                color: var(--text-secondary);
-            }
-
-        @media (max-width: 768px) {
-            .modal-content {
-                width: 95%;
-                max-height: 95vh;
-            }
-
-            .modal-tabs {
-                flex-direction: row;
-                overflow-x: auto;
-            }
-
-            .modal-tab {
-                white-space: nowrap;
-                min-width: 100px;
-            }
+        .info-content ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
         }
 
-        /* Contact Section */
+        .info-content li {
+            margin: 0.5rem 0;
+            color: var(--text-secondary);
+        }
+
+        /* Contact */
         .contact {
             padding: 6rem 2rem;
             max-width: 800px;
@@ -490,7 +506,7 @@
                 text-align: center;
                 font-size: 2.5rem;
                 margin-bottom: 3rem;
-                color: var(--accent-color);
+                color: var(--primary-color);
             }
 
         .contact-form {
@@ -514,18 +530,19 @@
             .form-group textarea {
                 padding: 1rem;
                 background: var(--card-bg);
-                border: 1px solid rgba(255, 255, 255, 0.1);
+                border: 1px solid var(--border-color);
                 border-radius: 8px;
                 color: var(--text-primary);
                 font-family: inherit;
                 font-size: 1rem;
-                transition: border 0.3s;
+                transition: all 0.3s;
             }
 
                 .form-group input:focus,
                 .form-group textarea:focus {
                     outline: none;
-                    border-color: var(--accent-color);
+                    border-color: var(--primary-color);
+                    box-shadow: 0 0 0 3px rgba(0, 132, 255, 0.1);
                 }
 
             .form-group textarea {
@@ -535,8 +552,8 @@
 
         .submit-btn {
             padding: 1rem 2rem;
-            background: var(--accent-color);
-            color: var(--primary-bg);
+            background: var(--primary-color);
+            color: white;
             border: none;
             border-radius: 50px;
             font-weight: bold;
@@ -547,7 +564,7 @@
 
             .submit-btn:hover {
                 transform: translateY(-2px);
-                box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+                box-shadow: 0 10px 30px rgba(0, 132, 255, 0.3);
             }
 
         .contact-info {
@@ -566,10 +583,11 @@
             background: var(--card-bg);
             border-radius: 15px;
             text-align: center;
+            border: 1px solid var(--border-color);
         }
 
             .newsletter-section h3 {
-                color: var(--accent-color);
+                color: var(--primary-color);
                 margin-bottom: 0.5rem;
             }
 
@@ -588,8 +606,8 @@
             .newsletter-form input {
                 flex: 1;
                 padding: 1rem;
-                background: var(--primary-bg);
-                border: 1px solid rgba(255, 255, 255, 0.1);
+                background: var(--bg-primary);
+                border: 1px solid var(--border-color);
                 border-radius: 8px;
                 color: var(--text-primary);
                 font-size: 1rem;
@@ -597,13 +615,13 @@
 
                 .newsletter-form input:focus {
                     outline: none;
-                    border-color: var(--accent-color);
+                    border-color: var(--primary-color);
                 }
 
         .newsletter-btn {
             padding: 1rem 2rem;
-            background: var(--accent-color);
-            color: var(--primary-bg);
+            background: var(--primary-color);
+            color: white;
             border: none;
             border-radius: 8px;
             font-weight: bold;
@@ -612,45 +630,29 @@
         }
 
             .newsletter-btn:hover {
-                background: #00cc6a;
+                opacity: 0.9;
                 transform: translateY(-2px);
             }
 
-        @media (max-width: 768px) {
-            .newsletter-form {
-                flex-direction: column;
-            }
-        }
-
         /* Footer */
         footer {
-            background: var(--secondary-bg);
+            background: var(--bg-secondary);
             padding: 3rem 2rem;
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid var(--border-color);
+            transition: all 0.3s ease;
         }
 
             footer p {
                 color: var(--text-secondary);
             }
 
-        /* Mobile Menu Toggle */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-        }
-
-            .menu-toggle span {
-                width: 25px;
-                height: 3px;
-                background: var(--text-primary);
-                transition: 0.3s;
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
             }
 
-        /* Responsive */
-        @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5rem;
             }
@@ -659,23 +661,8 @@
                 font-size: 1.1rem;
             }
 
-            nav ul {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                width: 100%;
-                background: rgba(10, 10, 10, 0.98);
+            .newsletter-form {
                 flex-direction: column;
-                padding: 2rem;
-                transition: left 0.3s;
-            }
-
-                nav ul.active {
-                    left: 0;
-                }
-
-            .menu-toggle {
-                display: flex;
             }
 
             .games-grid {
@@ -687,82 +674,117 @@
 <body>
     <header>
         <nav>
-            <div class="logo">
-                <img src="C:\Users\aadit\Downloads\CocoStudioWebsite\Logos\studioname.png" alt="Coco Studio Logo" class="logo-image">
-                <span>Coco Studio</span>
-            </div>
-            <div class="menu-toggle" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul id="navMenu">
+            <div class="logo">Coco Studio</div>
+            <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#games">Games</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark</button>
         </nav>
     </header>
 
-    <section class="main" id="home">
+    <section class="hero" id="home">
         <h1>Welcome to Coco Studio</h1>
-        <p>We develop creative games for PC and Android. Our main focus is on fresh new concepts which bring a new vibe to games. Stay tuned for further updates and many more games!</p>
-        <a href="#games" class="cta-button">Play Our Games</a>
+        <p>Indie game studio from India. Creating innovative platformers, puzzles & experimental games. Featured in Alter Game Jam!</p>
+        <a href="#games" class="cta-button">Explore Our Games</a>
     </section>
 
     <section class="about" id="about">
         <h2>About Us</h2>
-        <p>Founded by a student and named after his dog. the studio hopes to bring games that you can play and share with your families and get that childhood feeling. We are a strict No Generative AI Studio </p>
+        <p>Coco Studio is a passionate indie game development team from India specializing in creative platformers, puzzle games, and experimental gameplay experiences. From Alter Game Jam entries to experimental builds, every game is crafted with innovation and dedication. We create games that challenge, delight, and inspire players worldwide.</p>
     </section>
 
     <section class="games" id="games">
         <h2>Our Games</h2>
         <div class="games-grid">
             <div class="game-card" onclick="openModal('game1')">
-                <img src="C:\Users\aadit\Downloads\CocoStudioWebsite\Images\DebuggerThumbnail.png" alt="Game1 Logo" class="game-image">
+                <div class="game-image game-image-1" data-title="De-Bug-Er"></div>
                 <div class="game-info">
-                    <h3>Game Title 1</h3>
-                    <p>An exciting adventure awaits! Experience fast-paced action and stunning visuals.</p>
+                    <h3>De-Bug-Er</h3>
+                    <p>Semi puzzle platformer where you debug levels before uploading patches. Featured in Alter Game Jam.</p>
                     <div class="platform-badges">
-                        <span class="badge">iOS</span>
-                        <span class="badge">Android</span>
+                        <span class="badge">Windows</span>
+                        <span class="badge">Puzzle</span>
                     </div>
                     <div class="game-links">
-                        <a href="https://play.google.com/store/apps/details?id=your.game1" target="_blank" onclick="event.stopPropagation()">Play Store</a>
-                        <a href="https://your-game-1.itch.io" target="_blank" onclick="event.stopPropagation()">itch.io</a>
+                        <a href="https://thunder-3549p.itch.io/de-bug-er" target="_blank">itch.io</a>
                     </div>
                 </div>
             </div>
 
             <div class="game-card" onclick="openModal('game2')">
-                <div class="game-image">🏃</div>
+                <div class="game-image game-image-2" data-title="Block-By-Block"></div>
                 <div class="game-info">
-                    <h3>Game Title 2</h3>
-                    <p>Run, jump, and collect! A thrilling endless runner with unique mechanics.</p>
+                    <h3>Block-By-Block</h3>
+                    <p>Build your own levels by assembling pentomino puzzle pieces. Experimental game with Free Mode.</p>
                     <div class="platform-badges">
-                        <span class="badge">iOS</span>
-                        <span class="badge">Android</span>
+                        <span class="badge">Windows</span>
+                        <span class="badge">Web</span>
                     </div>
                     <div class="game-links">
-                        <a href="https://play.google.com/store/apps/details?id=your.game2" target="_blank" onclick="event.stopPropagation()">Play Store</a>
-                        <a href="https://your-game-2.itch.io" target="_blank" onclick="event.stopPropagation()">itch.io</a>
+                        <a href="https://thunder-3549p.itch.io/block-by-block" target="_blank">itch.io</a>
                     </div>
                 </div>
             </div>
 
             <div class="game-card" onclick="openModal('game3')">
-                <div class="game-image">🎯</div>
+                <div class="game-image game-image-3" data-title="Cosmic Cosmo"></div>
                 <div class="game-info">
-                    <h3>Game Title 3</h3>
-                    <p>Test your skills in this challenging puzzle game with addictive gameplay.</p>
+                    <h3>Cosmic Cosmo</h3>
+                    <p>Space adventure where Cosmo the dog collects ship parts after a lunar crash landing.</p>
                     <div class="platform-badges">
-                        <span class="badge">iOS</span>
-                        <span class="badge">Android</span>
+                        <span class="badge">Windows</span>
+                        <span class="badge">Adventure</span>
                     </div>
                     <div class="game-links">
-                        <a href="https://play.google.com/store/apps/details?id=your.game3" target="_blank" onclick="event.stopPropagation()">Play Store</a>
-                        <a href="https://your-game-3.itch.io" target="_blank" onclick="event.stopPropagation()">itch.io</a>
+                        <a href="https://thunder-3549p.itch.io/cosmic-cosmo" target="_blank">itch.io</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card" onclick="openModal('game4')">
+                <div class="game-image game-image-4" data-title="Memorophilia"></div>
+                <div class="game-info">
+                    <h3>Memorophilia</h3>
+                    <p>Memory-based puzzle game that tests your cognitive skills with engaging challenges.</p>
+                    <div class="platform-badges">
+                        <span class="badge">Windows</span>
+                        <span class="badge">Puzzle</span>
+                    </div>
+                    <div class="game-links">
+                        <a href="https://thunder-3549p.itch.io/memorophilia" target="_blank">itch.io</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card" onclick="openModal('game5')">
+                <div class="game-image game-image-5" data-title="Block-By-Block 3D"></div>
+                <div class="game-info">
+                    <h3>Block-By-Block 3D</h3>
+                    <p>3D evolution of the classic block assembly game with enhanced visuals and mechanics.</p>
+                    <div class="platform-badges">
+                        <span class="badge">Windows</span>
+                        <span class="badge">3D</span>
+                    </div>
+                    <div class="game-links">
+                        <a href="https://thunder-3549p.itch.io/block-by-block-3d" target="_blank">itch.io</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card" onclick="openModal('game6')">
+                <div class="game-image game-image-6" data-title="Magic 2048"></div>
+                <div class="game-info">
+                    <h3>Magic 2048</h3>
+                    <p>Magical twist on the classic 2048 puzzle game with enchanting visuals and gameplay.</p>
+                    <div class="platform-badges">
+                        <span class="badge">Windows</span>
+                        <span class="badge">Puzzle</span>
+                    </div>
+                    <div class="game-links">
+                        <a href="https://thunder-3549p.itch.io/magic-2048" target="_blank">itch.io</a>
                     </div>
                 </div>
             </div>
@@ -771,7 +793,7 @@
 
     <section class="contact" id="contact">
         <h2>Get in Touch</h2>
-        <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <form class="contact-form" action="https://formspree.io/f/mnnknbbq" method="POST">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" required>
@@ -791,14 +813,14 @@
         <div class="newsletter-section">
             <h3>Subscribe to Our Newsletter</h3>
             <p>Get updates about new games and exclusive content!</p>
-            <form class="newsletter-form" action="https://formspree.io/f/YOUR_NEWSLETTER_ID" method="POST">
+            <form class="newsletter-form" action="https://formspree.io/f/xjkqkeek" method="POST">
                 <input type="email" name="email" placeholder="Enter your email" required>
                 <button type="submit" class="newsletter-btn">Subscribe</button>
             </form>
         </div>
         <div class="contact-info">
-            <p><strong>Email:</strong> contact@cocostudio.com</p>
-            <p><strong>Base:</strong> Your City, Your Country</p>
+            <p><strong>Email:</strong> coco.games.studio@gmail.com</p>
+            <p><strong>Base:</strong> India</p>
         </div>
     </section>
 
@@ -806,144 +828,189 @@
         <p>&copy; 2025 Coco Studio. All rights reserved. Making games is our passion!</p>
     </footer>
 
-    <!-- Game Modals -->
+    <!-- Game Modal -->
     <div id="gameModal" class="modal">
         <div class="modal-content">
-            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <button class="modal-close" onclick="closeModal()">×</button>
             <div class="modal-header">
                 <h2 id="modalGameTitle">Game Title</h2>
-                <p id="modalGameDescription">Game description goes here</p>
+                <p id="modalGameDescription">Game description</p>
             </div>
             <div class="modal-tabs">
-                <div class="modal-tab active" onclick="switchTab('trailer')">Trailer</div>
-                <div class="modal-tab" onclick="switchTab('photos')">Screenshots</div>
-                <div class="modal-tab" onclick="switchTab('info')">Info</div>
+                <button class="modal-tab active" onclick="switchTab('trailer')">Trailer</button>
+                <button class="modal-tab" onclick="switchTab('photos')">Screenshots</button>
+                <button class="modal-tab" onclick="switchTab('info')">Info</button>
             </div>
             <div class="modal-body">
                 <div id="trailerTab" class="tab-content active">
-                    <div class="video-container" id="videoContainer">
+                    <div class="video-container">
                         <iframe id="trailerVideo" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
                 <div id="photosTab" class="tab-content">
-                    <div class="photos-grid" id="photosGrid">
-                        <!-- Photos will be loaded dynamically -->
-                    </div>
+                    <div class="photos-grid" id="photosGrid"></div>
                 </div>
                 <div id="infoTab" class="tab-content">
-                    <div class="info-content" id="infoContent">
-                        <!-- Info will be loaded dynamically -->
-                    </div>
+                    <div class="info-content" id="infoContent"></div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Mobile menu toggle
-        function toggleMenu() {
-            const navMenu = document.getElementById('navMenu');
-            navMenu.classList.toggle('active');
+        // Initialize theme
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            const newTheme = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            document.querySelector('.theme-toggle').textContent = newTheme === 'dark' ? '🌙 Dark' : '☀️ Light';
         }
 
-        // Smooth scroll for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                    // Close mobile menu if open
-                    document.getElementById('navMenu').classList.remove('active');
-                }
-            });
-        });
-
-        // Formspree handles form submission automatically, no custom handler needed
-
-        // Game data with trailers and screenshots
+        // Game data
         const gameData = {
             game1: {
-                title: "Game Title 1",
-                description: "An exciting adventure awaits! Experience fast-paced action and stunning visuals.",
-                trailer: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Replace with your YouTube video ID
+                title: "De-Bug-Er",
+                description: "Semi puzzle platformer where players debug levels and fix glitches before uploading patches.",
+                trailer: "https://www.youtube.com/embed/dQw4w9WgXcQ",
                 photos: [
-                    "https://via.placeholder.com/400x300/667eea/ffffff?text=Screenshot+1",
-                    "https://via.placeholder.com/400x300/764ba2/ffffff?text=Screenshot+2",
-                    "https://via.placeholder.com/400x300/f093fb/ffffff?text=Screenshot+3",
-                    "https://via.placeholder.com/400x300/4facfe/ffffff?text=Screenshot+4"
+                    "https://via.placeholder.com/400x300/667eea/ffffff?text=De-Bug-Er+Level+1",
+                    "https://via.placeholder.com/400x300/764ba2/ffffff?text=De-Bug-Er+Level+2",
+                    "https://via.placeholder.com/400x300/f093fb/ffffff?text=De-Bug-Er+Gameplay",
+                    "https://via.placeholder.com/400x300/4facfe/ffffff?text=De-Bug-Er+Mechanics"
                 ],
                 info: `
-                            <h3>About the Game</h3>
-                            <p>This is an amazing game with incredible features and stunning graphics.</p>
-                            <h3>Features</h3>
-                            <ul>
-                                <li>Fast-paced action gameplay</li>
-                                <li>Stunning 3D graphics</li>
-                                <li>Multiple game modes</li>
-                                <li>Online multiplayer</li>
-                                <li>Regular updates and new content</li>
-                            </ul>
-                            <h3>System Requirements</h3>
-                            <ul>
-                                <li>iOS 12.0 or later</li>
-                                <li>Android 8.0 or later</li>
-                                <li>2GB RAM minimum</li>
-                            </ul>
-                        `
+                        <h3>Theme</h3>
+                        <p>Programming</p>
+                        <h3>Controls</h3>
+                        <ul>
+                            <li>W - Jump</li>
+                            <li>A/D - Move Left/Right</li>
+                            <li>Left Ctrl - Sprint</li>
+                            <li>Left Shift/E - Interact</li>
+                        </ul>
+                        <h3>Features</h3>
+                        <ul>
+                            <li>3 Different Levels</li>
+                            <li>Key & Door System</li>
+                            <li>Mini-game Events</li>
+                            <li>Controller Support</li>
+                            <li>Featured in Alter Game Jam</li>
+                        </ul>
+                    `
             },
             game2: {
-                title: "Game Title 2",
-                description: "Run, jump, and collect! A thrilling endless runner with unique mechanics.",
+                title: "Block-By-Block",
+                description: "Build your own levels by assembling pentomino puzzle pieces. Experimental game with Free Mode creation.",
                 trailer: "https://www.youtube.com/embed/dQw4w9WgXcQ",
                 photos: [
-                    "https://via.placeholder.com/400x300/ff6b6b/ffffff?text=Screenshot+1",
-                    "https://via.placeholder.com/400x300/4ecdc4/ffffff?text=Screenshot+2",
-                    "https://via.placeholder.com/400x300/45b7d1/ffffff?text=Screenshot+3",
-                    "https://via.placeholder.com/400x300/f7dc6f/ffffff?text=Screenshot+4"
+                    "https://via.placeholder.com/400x300/ff6b6b/ffffff?text=Block-By-Block+Puzzle",
+                    "https://via.placeholder.com/400x300/4ecdc4/ffffff?text=Block-By-Block+Assembly",
+                    "https://via.placeholder.com/400x300/45b7d1/ffffff?text=Block-By-Block+Free+Mode",
+                    "https://via.placeholder.com/400x300/f7dc6f/ffffff?text=Block-By-Block+Levels"
                 ],
                 info: `
-                            <h3>About the Game</h3>
-                            <p>Experience the most addictive endless runner on mobile!</p>
-                            <h3>Features</h3>
-                            <ul>
-                                <li>Endless running action</li>
-                                <li>Collectible power-ups</li>
-                                <li>Beautiful environments</li>
-                                <li>Daily challenges</li>
-                                <li>Leaderboards</li>
-                            </ul>
-                        `
+                        <h3>Theme</h3>
+                        <p>Assemble</p>
+                        <h3>Features</h3>
+                        <ul>
+                            <li>Find pentomino tiles</li>
+                            <li>Assemble broken puzzle hearts</li>
+                            <li>Unlock Free Mode</li>
+                            <li>Pixel Art Style</li>
+                            <li>Made with Godot</li>
+                        </ul>
+                    `
             },
             game3: {
-                title: "Game Title 3",
-                description: "Test your skills in this challenging puzzle game with addictive gameplay.",
+                title: "Cosmic Cosmo",
+                description: "Space adventure where Cosmo the dog collects scattered spaceship parts after a lunar crash.",
                 trailer: "https://www.youtube.com/embed/dQw4w9WgXcQ",
                 photos: [
-                    "https://via.placeholder.com/400x300/a29bfe/ffffff?text=Screenshot+1",
-                    "https://via.placeholder.com/400x300/fd79a8/ffffff?text=Screenshot+2",
-                    "https://via.placeholder.com/400x300/fdcb6e/ffffff?text=Screenshot+3",
-                    "https://via.placeholder.com/400x300/6c5ce7/ffffff?text=Screenshot+4"
+                    "https://via.placeholder.com/400x300/a29bfe/ffffff?text=Cosmic+Cosmo+Space",
+                    "https://via.placeholder.com/400x300/fd79a8/ffffff?text=Cosmic+Cosmo+Adventure",
+                    "https://via.placeholder.com/400x300/fdcb6e/ffffff?text=Cosmic+Cosmo+Collection",
+                    "https://via.placeholder.com/400x300/6c5ce7/ffffff?text=Cosmic+Cosmo+Gameplay"
                 ],
                 info: `
-                            <h3>About the Game</h3>
-                            <p>A mind-bending puzzle experience that will challenge your thinking!</p>
-                            <h3>Features</h3>
-                            <ul>
-                                <li>100+ challenging levels</li>
-                                <li>Unique puzzle mechanics</li>
-                                <li>Relaxing soundtrack</li>
-                                <li>No ads or timers</li>
-                                <li>Regular new puzzles</li>
-                            </ul>
-                        `
+                        <h3>Story</h3>
+                        <p>Cosmo is sent on a lunar research mission but crashes landing. Help him collect all scattered ship parts!</p>
+                        <h3>Controls</h3>
+                        <ul>
+                            <li>LMB - Move</li>
+                            <li>RMB - Shoot</li>
+                            <li>MMB - Events</li>
+                        </ul>
+                    `
+            },
+            game4: {
+                title: "Memorophilia",
+                description: "Test your memory in this engaging puzzle game with challenging cognitive gameplay.",
+                trailer: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                photos: [
+                    "https://via.placeholder.com/400x300/ee5a6f/ffffff?text=Memorophilia+Game",
+                    "https://via.placeholder.com/400x300/f8b500/ffffff?text=Memorophilia+Challenge",
+                    "https://via.placeholder.com/400x300/30b455/ffffff?text=Memorophilia+Levels",
+                    "https://via.placeholder.com/400x300/0984e3/ffffff?text=Memorophilia+Memory"
+                ],
+                info: `
+                        <h3>Genre</h3>
+                        <p>Memory Puzzle</p>
+                        <h3>Features</h3>
+                        <ul>
+                            <li>Progressive difficulty</li>
+                            <li>Brain training mechanics</li>
+                            <li>Cognitive skill development</li>
+                        </ul>
+                    `
+            },
+            game5: {
+                title: "Block-By-Block 3D",
+                description: "3D evolution of Block-By-Block with enhanced visuals and 3D assembly mechanics.",
+                trailer: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                photos: [
+                    "https://via.placeholder.com/400x300/ff6b9d/ffffff?text=Block-3D+Assembly",
+                    "https://via.placeholder.com/400x300/c44569/ffffff?text=Block-3D+Gameplay",
+                    "https://via.placeholder.com/400x300/ffa502/ffffff?text=Block-3D+Puzzles",
+                    "https://via.placeholder.com/400x300/26de81/ffffff?text=Block-3D+Visuals"
+                ],
+                info: `
+                        <h3>Genre</h3>
+                        <p>3D Puzzle Platformer</p>
+                        <h3>Features</h3>
+                        <ul>
+                            <li>Full 3D environments</li>
+                            <li>Enhanced assembly mechanics</li>
+                            <li>Beautiful 3D graphics</li>
+                        </ul>
+                    `
+            },
+            game6: {
+                title: "Magic 2048",
+                description: "Magical twist on the classic 2048 puzzle game with enchanting visuals.",
+                trailer: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                photos: [
+                    "https://via.placeholder.com/400x300/9b59b6/ffffff?text=Magic+2048+Board",
+                    "https://via.placeholder.com/400x300/3498db/ffffff?text=Magic+2048+Spells",
+                    "https://via.placeholder.com/400x300/e74c3c/ffffff?text=Magic+2048+Gameplay",
+                    "https://via.placeholder.com/400x300/2ecc71/ffffff?text=Magic+2048+Magic"
+                ],
+                info: `
+                        <h3>Genre</h3>
+                        <p>Puzzle Game</p>
+                        <h3>Features</h3>
+                        <ul>
+                            <li>2048 puzzle mechanics</li>
+                            <li>Magical visual effects</li>
+                            <li>Spellcasting abilities</li>
+                        </ul>
+                    `
             }
         };
 
-        // Modal functions
         function openModal(gameId) {
             const modal = document.getElementById('gameModal');
             const game = gameData[gameId];
@@ -952,13 +1019,11 @@
             document.getElementById('modalGameDescription').textContent = game.description;
             document.getElementById('trailerVideo').src = game.trailer;
 
-            // Load photos
             const photosGrid = document.getElementById('photosGrid');
             photosGrid.innerHTML = game.photos.map(photo =>
                 `<div class="photo-item"><img src="${photo}" alt="Game screenshot"></div>`
             ).join('');
 
-            // Load info
             document.getElementById('infoContent').innerHTML = game.info;
 
             modal.classList.add('active');
@@ -969,59 +1034,23 @@
             const modal = document.getElementById('gameModal');
             modal.classList.remove('active');
             document.body.style.overflow = 'auto';
-
-            // Stop video playback
             document.getElementById('trailerVideo').src = '';
         }
 
         function switchTab(tabName) {
-            // Remove active class from all tabs
-            document.querySelectorAll('.modal-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-
-            // Remove active class from all tab contents
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
-
-            // Add active class to clicked tab
+            document.querySelectorAll('.modal-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
             event.target.classList.add('active');
-
-            // Show corresponding content
             document.getElementById(tabName + 'Tab').classList.add('active');
         }
 
-        // Close modal when clicking outside
         window.onclick = function (event) {
             const modal = document.getElementById('gameModal');
-            if (event.target === modal) {
-                closeModal();
-            }
+            if (event.target === modal) closeModal();
         }
 
-        // Close modal with Escape key
         document.addEventListener('keydown', function (event) {
-            if (event.key === 'Escape') {
-                closeModal();
-            }
-        });
-
-        // Add scroll effect to header
-        let lastScroll = 0;
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            const currentScroll = window.pageYOffset;
-
-            if (currentScroll > 100) {
-                header.style.background = 'rgba(10, 10, 10, 0.98)';
-                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.5)';
-            } else {
-                header.style.background = 'rgba(10, 10, 10, 0.95)';
-                header.style.boxShadow = 'none';
-            }
-
-            lastScroll = currentScroll;
+            if (event.key === 'Escape') closeModal();
         });
     </script>
 </body>
