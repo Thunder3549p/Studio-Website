@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -191,7 +192,6 @@
         }
 
         .game-card {
-            background: var(--card-bg);
             border-radius: 15px;
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
@@ -206,7 +206,7 @@
 
         .game-image {
             width: 100%;
-            height: 250px;
+            height: 100%;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             display: flex;
             align-items: center;
@@ -217,7 +217,7 @@
         }
 
         .game-image-1 {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: image("D:\StudioWebsite\Studio-Website\Images\DebuggerThumbnail.png");
         }
 
         .game-image-2 {
@@ -675,7 +675,7 @@
     <header>
         <nav>
             <div class="logo">
-                <img src="Logos\Logo RE-Design Full Circle 32px.png" alt="Coco Studio Logo" class="logo-image">
+                <img src="Logos\Logo RE-Design Full Circle 32px.png" class="logo-image">
                 <span>Coco Studio</span>
             </div>
             <ul>
@@ -703,19 +703,20 @@
         <h2>Our Games</h2>
         <div class="games-grid">
             <div class="game-card" onclick="openModal('game1')">
-                <div class="game-image game-image-1" data-title="De-Bug-Er"></div>
-                <div class="game-info">
-                    <h3>De-Bug-Er</h3>
-                    <p>Semi puzzle platformer where you debug levels before uploading patches. Second Place in Alter Game Jam.</p>
-                    <div class="platform-badges">
-                        <span class="badge">Windows</span>
-                        <span class="badge">Puzzle</span>
-                    </div>
-                    <div class="game-links">
-                        <a href="https://thunder-3549p.itch.io/de-bug-er" target="_blank">itch.io</a>
+                <div class="game-image game-image-1" data-title="De-Bug-Er">
+                </div>
+                    <div class="game-info">
+                        <h3>De-Bug-Er</h3>
+                        <p>Semi puzzle platformer where you debug levels before uploading patches. Second Place in Alter Game Jam.</p>
+                        <div class="platform-badges">
+                            <span class="badge">Windows</span>
+                            <span class="badge">Puzzle</span>
+                        </div>
+                        <div class="game-links">
+                            <a href="https://thunder-3549p.itch.io/de-bug-er" target="_blank">itch.io</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
             <div class="game-card" onclick="openModal('game2')">
                 <div class="game-image game-image-2" data-title="Block-By-Block"></div>
@@ -847,7 +848,7 @@
             <div class="modal-body">
                 <div id="trailerTab" class="tab-content active">
                     <div class="video-container">
-                        <iframe id="trailerVideo" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe id="trailerVideo" src=" autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
                 <div id="photosTab" class="tab-content">
@@ -880,30 +881,28 @@
                 description: "Semi puzzle platformer where players debug levels and fix glitches before uploading patches.",
                 trailer: "https://www.youtube.com/embed/dQw4w9WgXcQ",
                 photos: [
-                    "https://via.placeholder.com/400x300/667eea/ffffff?text=De-Bug-Er+Level+1",
-                    "https://via.placeholder.com/400x300/764ba2/ffffff?text=De-Bug-Er+Level+2",
-                    "https://via.placeholder.com/400x300/f093fb/ffffff?text=De-Bug-Er+Gameplay",
-                    "https://via.placeholder.com/400x300/4facfe/ffffff?text=De-Bug-Er+Mechanics"
+                    "D:/StudioWebsite/Studio-Website/Images/Debugger (1).png",
+                    "D:/StudioWebsite/Studio-Website/Images/Debugger (2).png",
                 ],
                 info: `
-                        <h3>Theme</h3>
-                        <p>Programming</p>
-                        <h3>Controls</h3>
-                        <ul>
-                            <li>W - Jump</li>
-                            <li>A/D - Move Left/Right</li>
-                            <li>Left Ctrl - Sprint</li>
-                            <li>Left Shift/E - Interact</li>
-                        </ul>
-                        <h3>Features</h3>
-                        <ul>
-                            <li>3 Different Levels</li>
-                            <li>Key & Door System</li>
-                            <li>Mini-game Events</li>
-                            <li>Controller Support</li>
-                            <li>Featured in Alter Game Jam</li>
-                        </ul>
-                    `
+                            <h3>Theme</h3>
+                            <p>Programming</p>
+                            <h3>Controls</h3>
+                            <ul>
+                                <li>W - Jump</li>
+                                <li>A/D - Move Left/Right</li>
+                                <li>Left Ctrl - Sprint</li>
+                                <li>Left Shift/E - Interact</li>
+                            </ul>
+                            <h3>Features</h3>
+                            <ul>
+                                <li>3 Different Levels</li>
+                                <li>Key & Door System</li>
+                                <li>Mini-game Events</li>
+                                <li>Controller Support</li>
+                                <li>Featured in Alter Game Jam</li>
+                            </ul>
+                        `
             },
             game2: {
                 title: "Block-By-Block",
@@ -916,17 +915,17 @@
                     "https://via.placeholder.com/400x300/f7dc6f/ffffff?text=Block-By-Block+Levels"
                 ],
                 info: `
-                        <h3>Theme</h3>
-                        <p>Assemble</p>
-                        <h3>Features</h3>
-                        <ul>
-                            <li>Find pentomino tiles</li>
-                            <li>Assemble broken puzzle hearts</li>
-                            <li>Unlock Free Mode</li>
-                            <li>Pixel Art Style</li>
-                            <li>Made with Godot</li>
-                        </ul>
-                    `
+                            <h3>Theme</h3>
+                            <p>Assemble</p>
+                            <h3>Features</h3>
+                            <ul>
+                                <li>Find pentomino tiles</li>
+                                <li>Assemble broken puzzle hearts</li>
+                                <li>Unlock Free Mode</li>
+                                <li>Pixel Art Style</li>
+                                <li>Made with Godot</li>
+                            </ul>
+                        `
             },
             game3: {
                 title: "Cosmic Cosmo",
@@ -939,15 +938,15 @@
                     "https://via.placeholder.com/400x300/6c5ce7/ffffff?text=Cosmic+Cosmo+Gameplay"
                 ],
                 info: `
-                        <h3>Story</h3>
-                        <p>Cosmo is sent on a lunar research mission but crashes landing. Help him collect all scattered ship parts!</p>
-                        <h3>Controls</h3>
-                        <ul>
-                            <li>LMB - Move</li>
-                            <li>RMB - Shoot</li>
-                            <li>MMB - Events</li>
-                        </ul>
-                    `
+                            <h3>Story</h3>
+                            <p>Cosmo is sent on a lunar research mission but crashes landing. Help him collect all scattered ship parts!</p>
+                            <h3>Controls</h3>
+                            <ul>
+                                <li>LMB - Move</li>
+                                <li>RMB - Shoot</li>
+                                <li>MMB - Events</li>
+                            </ul>
+                        `
             },
             game4: {
                 title: "Memorophilia",
@@ -960,15 +959,15 @@
                     "https://via.placeholder.com/400x300/0984e3/ffffff?text=Memorophilia+Memory"
                 ],
                 info: `
-                        <h3>Genre</h3>
-                        <p>Memory Puzzle</p>
-                        <h3>Features</h3>
-                        <ul>
-                            <li>Progressive difficulty</li>
-                            <li>Brain training mechanics</li>
-                            <li>Cognitive skill development</li>
-                        </ul>
-                    `
+                            <h3>Genre</h3>
+                            <p>Memory Puzzle</p>
+                            <h3>Features</h3>
+                            <ul>
+                                <li>Progressive difficulty</li>
+                                <li>Brain training mechanics</li>
+                                <li>Cognitive skill development</li>
+                            </ul>
+                        `
             },
             game5: {
                 title: "Block-By-Block 3D",
@@ -981,15 +980,15 @@
                     "https://via.placeholder.com/400x300/26de81/ffffff?text=Block-3D+Visuals"
                 ],
                 info: `
-                        <h3>Genre</h3>
-                        <p>3D Puzzle Platformer</p>
-                        <h3>Features</h3>
-                        <ul>
-                            <li>Full 3D environments</li>
-                            <li>Enhanced assembly mechanics</li>
-                            <li>Beautiful 3D graphics</li>
-                        </ul>
-                    `
+                            <h3>Genre</h3>
+                            <p>3D Puzzle Platformer</p>
+                            <h3>Features</h3>
+                            <ul>
+                                <li>Full 3D environments</li>
+                                <li>Enhanced assembly mechanics</li>
+                                <li>Beautiful 3D graphics</li>
+                            </ul>
+                        `
             },
             game6: {
                 title: "Magic 2048",
@@ -1002,15 +1001,15 @@
                     "https://via.placeholder.com/400x300/2ecc71/ffffff?text=Magic+2048+Magic"
                 ],
                 info: `
-                        <h3>Genre</h3>
-                        <p>Puzzle Game</p>
-                        <h3>Features</h3>
-                        <ul>
-                            <li>2048 puzzle mechanics</li>
-                            <li>Magical visual effects</li>
-                            <li>Spellcasting abilities</li>
-                        </ul>
-                    `
+                            <h3>Genre</h3>
+                            <p>Puzzle Game</p>
+                            <h3>Features</h3>
+                            <ul>
+                                <li>2048 puzzle mechanics</li>
+                                <li>Magical visual effects</li>
+                                <li>Spellcasting abilities</li>
+                            </ul>
+                        `
             }
         };
 
