@@ -936,7 +936,6 @@
         applyTheme();
         systemDark.addEventListener('change', applyTheme);
         document.documentElement.setAttribute('data-theme', savedTheme);
-        document.querySelector('.theme-toggle').textContent = savedTheme === 'dark' ? '🌙' : '☀️';
         document.querySelectorAll('.game-card').forEach(card => card.addEventListener('keydown', e => {
             if (e.target === card && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); card.click(); }
         }));
