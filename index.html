@@ -220,11 +220,11 @@
         }
 
         .game-image-1 {
-            background-image: url("Icons/BoneDashIcon.png");
+            background: image("D:\StudioWebsite\Studio-Website\Images\DebuggerThumbnail.png");
         }
 
         .game-image-2 {
-            background-image: url("Icons\BasicsIcon.png");
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
         }
 
         .game-image-3 {
@@ -725,7 +725,12 @@
         .game-card:nth-child(even) { --tilt: 1deg; }
         .game-card:hover, .game-card:focus-visible { transform: rotate(0deg) translate(-2px, -2px); box-shadow: 9px 9px 0 var(--shadow-solid); }
         .game-image-1, .game-image-2 { aspect-ratio: 16 / 10; border-bottom: 2px solid var(--line); background: radial-gradient(#2b1d10 1.5px, transparent 2px) 0 0 / 18px 18px, var(--accent); }
-        .game-image-1 { background: url("Images/DebuggerThumbnail.png") center / cover no-repeat, var(--accent); }
+        .game-image-1 {
+            background: url("Images/BoneDashThumbnail.png") center / cover no-repeat, var(--accent);
+        }
+        .game-image-1 {
+            background: url("Images/BasicsThumbnail.png") center / cover no-repeat, var(--accent);
+        }
         .badge { background: transparent; border: 1.5px solid var(--line); color: var(--text-primary); font-weight: 700; }
 
         .form-group input, .form-group textarea, .newsletter-form input { border: 2px solid var(--line); border-radius: 10px; }
@@ -792,7 +797,7 @@
     <section class="games" id="games">
         <h2>Our Games</h2>
         <div class="games-grid">
-            <div class="game-card" tabindex="0" role="button" onclick="openModal(\'game1\')">
+            <div class="game-card" tabindex="0" role="button" onclick="openModal('game1')">
                 <div class="game-image-1" data-title="Bone Dash">
                 </div>
                     <div class="game-info">
@@ -807,7 +812,7 @@
                         </div>
                     </div>
                 </div>                    
-            <div class="game-card" tabindex="0" role="button" onclick="openModal(\'game2\')">
+            <div class="game-card" tabindex="0" role="button" onclick="openModal('game2')">
                 <div class="game-image-2" data-title="Basics">
                 </div>
                     <div class="game-info">
@@ -823,7 +828,7 @@
                     </div>
                 </div>
             <!--
-            <div class="game-card" tabindex="0" role="button" onclick="openModal(\'game2\')">
+            <div class="game-card" tabindex="0" role="button" onclick="openModal('game2')">
                 <div class="game-image game-image-2" data-title="Block-By-Block"></div>
                 <div class="game-info">
                     <h3>Block-By-Block</h3>
@@ -837,7 +842,7 @@
                     </div>
                 </div>
             </div>
-            <div class="game-card" tabindex="0" role="button" onclick="openModal(\'game5\')">
+            <div class="game-card" tabindex="0" role="button" onclick="openModal('game5')">
                 <div class="game-image game-image-5" data-title="Block-By-Block 3D"></div>
                 <div class="game-info">
                     <h3>Block-By-Block 3D</h3>
@@ -889,7 +894,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2026 Coco Studio. Made by people in India. No generative AI.</p>
+        <p>&copy; 2026 Coco Studio. No generative AI.</p>
     </footer>
 
     <!-- Game Modal -->
@@ -944,7 +949,7 @@
             game1: {
                 title: "Bone Dash",
                 description: "A Swipe & Shoot casual Mobile game",
-                trailer: "https://www.youtube.com/embed/zquPxrsPvBY?si=A6r3w3x08eDXoScC",
+                trailer: "https://youtu.be/zquPxrsPvBY?si=UTUjuE3udfulyGH_",
                 photos: [
                     "Images/BoneDash01 (1).jpg",
                     "Images/BoneDash01 (2).jpg",
@@ -968,29 +973,48 @@
             },
             game2: {
                 title: "Basics",
-                description: "Learn a new mechanic every 10 levels. Each mechanic inspired by a common mechanic. Try out this minimalist game now in the playstore.",
-                trailer: "https://www.youtube.com/embed/Z-oGwXdzDMQ?si=WB-FXJvEMh7xBHK7",
+                description: "A casual game which focuses on common game mechanics and has a minimalist design approach.",
+                trailer: "https://youtu.be/Z-oGwXdzDMQ?si=ICPnKNnH4xSsYWRK",
                 photos: [
-                    "Images/Screenshots/BASICS Screenshot 1.jpg",
-                    "Images/Screenshots/BASICS Screenshot 2.jpg",
-                    "Images/Screenshots/BASICS Screenshot 3.jpg",
-                    "Images/Screenshots/BASICS Screenshot 4.jpg"
+                    "https://via.placeholder.com/400x300/ff6b6b/ffffff?text=Block-By-Block+Puzzle",
+                    "https://via.placeholder.com/400x300/4ecdc4/ffffff?text=Block-By-Block+Assembly",
+                    "https://via.placeholder.com/400x300/45b7d1/ffffff?text=Block-By-Block+Free+Mode",
+                    "https://via.placeholder.com/400x300/f7dc6f/ffffff?text=Block-By-Block+Levels"
                 ],
                 info: `
                             <h3>Info</h3>
+                            <h3>Features</h3>
                             <ul>
-                            BASICS is a minimalist game which references a various mechanics found in common games. Featuring 50+ levels on its initial launch, its meant to be played as an on the go game. It features simplistic controls and obstacles making it easy to understand and play.
-
-                            <li>Features :
-                            - Various mechanics
-                            - 50+ Levels
-                            - No Ads at all
-                            - A completely free game experience</li>
-                            <li> Game Link - <a href="https://play.google.com/store/apps/details?id=com.CocoStudio.Basics" target="_blank">Playstore</a> </li>
+                                <li>- Uninterrupted Play - No Ads or In-App purchases</li>
+                                <li>- Diverse mechanics - The game features various mechanics each differing from one another creating diverse gameplay</li>
+                                <li>- Simplistic Vision - The game stays consistent with its minimalist theme</li>
                             </ul>
                         `
             },
             game3: {
+                title: "Block-By-Block",
+                description: "Build your own levels by assembling pentomino puzzle pieces. Experimental game with Free Mode creation.",
+                trailer: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                photos: [
+                    "https://via.placeholder.com/400x300/ff6b6b/ffffff?text=Block-By-Block+Puzzle",
+                    "https://via.placeholder.com/400x300/4ecdc4/ffffff?text=Block-By-Block+Assembly",
+                    "https://via.placeholder.com/400x300/45b7d1/ffffff?text=Block-By-Block+Free+Mode",
+                    "https://via.placeholder.com/400x300/f7dc6f/ffffff?text=Block-By-Block+Levels"
+                ],
+                info: `
+                            <h3>Theme</h3>
+                            <p>Assemble</p>
+                            <h3>Features</h3>
+                            <ul>
+                                <li>Find pentomino tiles</li>
+                                <li>Assemble broken puzzle hearts</li>
+                                <li>Unlock Free Mode</li>
+                                <li>Pixel Art Style</li>
+                                <li>Made with Godot</li>
+                            </ul>
+                        `
+            },
+            game4: {
                 title: "Cosmic Cosmo",
                 description: "Space adventure where Cosmo the dog collects scattered spaceship parts after a lunar crash.",
                 trailer: "https://www.youtube.com/embed/dQw4w9WgXcQ",
@@ -1011,7 +1035,7 @@
                             </ul>
                         `
             },
-            game4: {
+            game5: {
                 title: "Memorophilia",
                 description: "Test your memory in this engaging puzzle game with challenging cognitive gameplay.",
                 trailer: "https://www.youtube.com/embed/dQw4w9WgXcQ",
@@ -1032,7 +1056,7 @@
                             </ul>
                         `
             },
-            game5: {
+            game6: {
                 title: "Block-By-Block 3D",
                 description: "3D evolution of Block-By-Block with enhanced visuals and 3D assembly mechanics.",
                 trailer: "https://www.youtube.com/embed/dQw4w9WgXcQ",
@@ -1053,7 +1077,7 @@
                             </ul>
                         `
             },
-            game6: {
+            game7: {
                 title: "Magic 2048",
                 description: "Magical twist on the classic 2048 puzzle game with enchanting visuals.",
                 trailer: "https://www.youtube.com/embed/dQw4w9WgXcQ",
