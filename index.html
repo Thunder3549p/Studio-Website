@@ -459,30 +459,43 @@
             }
 
         .photos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
         }
 
         .photo-item {
-            border-radius: 10px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s;
-            background: var(--bg-secondary);
-            height: 200px;
+            height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-in;
         }
 
-            .photo-item:hover {
-                transform: scale(1.05);
-            }
-
             .photo-item img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
+                object-fit: contain;
             }
 
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 3000;
+            background: rgba(0,0,0,0.92);
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            cursor: zoom-out;
+        }
+
+            .lightbox.active {
+                display: flex;
+            }
+
+            .lightbox img {
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: contain;
+                border-radius: 8px;
+            }
         .info-content h3 {
             color: var(--primary-color);
             margin: 1rem 0 0.5rem 0;
@@ -728,7 +741,7 @@
         .game-image-1 {
             background: url("Images/BoneDashThumbnail.png") center / cover no-repeat, var(--accent);
         }
-        .game-image-1 {
+        .game-image-2 {
             background: url("Images/BasicsThumbnail.png") center / cover no-repeat, var(--accent);
         }
         .badge { background: transparent; border: 1.5px solid var(--line); color: var(--text-primary); font-weight: 700; }
@@ -781,11 +794,11 @@
     <section class="pledge-section" id="pledge">
         <div class="pledge-inner">
             <svg class="seal" viewBox="0 0 200 200" role="img" aria-label="Human made, no generative AI seal">
-                <defs><path id="ring" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
-                <circle cx="100" cy="100" r="96" fill="#fff4db" stroke="#2b1d10" stroke-width="4"/>
-                <circle cx="100" cy="100" r="62" fill="none" stroke="#2b1d10" stroke-width="2" stroke-dasharray="4 5"/>
+                <defs><path id="ring" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" /></defs>
+                <circle cx="100" cy="100" r="96" fill="#fff4db" stroke="#2b1d10" stroke-width="4" />
+                <circle cx="100" cy="100" r="62" fill="none" stroke="#2b1d10" stroke-width="2" stroke-dasharray="4 5" />
                 <text font-family="Fredoka, sans-serif" font-size="15" font-weight="700" letter-spacing="2.5" fill="#2b1d10"><textPath href="#ring">HUMAN MADE · NO GENERATIVE AI · INDIE · </textPath></text>
-                <g fill="#2b1d10"><ellipse cx="100" cy="118" rx="20" ry="16"/><ellipse cx="72" cy="94" rx="8" ry="11"/><ellipse cx="91" cy="80" rx="8" ry="11"/><ellipse cx="109" cy="80" rx="8" ry="11"/><ellipse cx="128" cy="94" rx="8" ry="11"/></g>
+                <g fill="#2b1d10"><ellipse cx="100" cy="118" rx="20" ry="16" /><ellipse cx="72" cy="94" rx="8" ry="11" /><ellipse cx="91" cy="80" rx="8" ry="11" /><ellipse cx="109" cy="80" rx="8" ry="11" /><ellipse cx="128" cy="94" rx="8" ry="11" /></g>
             </svg>
             <div>
                 <h2>No generative AI in our games. Ever.</h2>
@@ -800,33 +813,33 @@
             <div class="game-card" tabindex="0" role="button" onclick="openModal('game1')">
                 <div class="game-image-1" data-title="Bone Dash">
                 </div>
-                    <div class="game-info">
-                        <h3>Bone Dash</h3>
-                        <p>A Swipe & Shoot casual Mobile game</p>
-                        <div class="platform-badges">
-                            <span class="badge">Android</span>
-                            <span class="badge">Casual</span>
-                        </div>
-                        <div class="game-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.CocoStudio.BashDash" target="_blank" rel="noopener" onclick="event.stopPropagation()">Playstore</a>
-                        </div>
+                <div class="game-info">
+                    <h3>Bone Dash</h3>
+                    <p>A Swipe & Shoot casual Mobile game</p>
+                    <div class="platform-badges">
+                        <span class="badge">Android</span>
+                        <span class="badge">Casual</span>
                     </div>
-                </div>                    
+                    <div class="game-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.CocoStudio.BashDash" target="_blank" rel="noopener" onclick="event.stopPropagation()">Playstore</a>
+                    </div>
+                </div>
+            </div>
             <div class="game-card" tabindex="0" role="button" onclick="openModal('game2')">
                 <div class="game-image-2" data-title="Basics">
                 </div>
-                    <div class="game-info">
-                        <h3>Basics</h3>
-                        <p>A level based basic game with multiple mechanics</p>
-                        <div class="platform-badges">
-                            <span class="badge">Android</span>
-                            <span class="badge">Casual</span>
-                        </div>
-                        <div class="game-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.CocoStudio.Basics" target="_blank" rel="noopener" onclick="event.stopPropagation()">Playstore</a>
-                        </div>
+                <div class="game-info">
+                    <h3>Basics</h3>
+                    <p>A level based basic game with multiple mechanics</p>
+                    <div class="platform-badges">
+                        <span class="badge">Android</span>
+                        <span class="badge">Casual</span>
+                    </div>
+                    <div class="game-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.CocoStudio.Basics" target="_blank" rel="noopener" onclick="event.stopPropagation()">Playstore</a>
                     </div>
                 </div>
+            </div>
             <!--
             <div class="game-card" tabindex="0" role="button" onclick="openModal('game2')">
                 <div class="game-image game-image-2" data-title="Block-By-Block"></div>
@@ -912,7 +925,7 @@
             <div class="modal-body">
                 <div id="trailerTab" class="tab-content active">
                     <div class="video-container">
-                        <iframe id="trailerVideo" src="" title="Game trailer" allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe referrerpolicy="strict-origin-when-cross-origin" id="trailerVideo" src="" title="Game trailer" allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
                 <div id="photosTab" class="tab-content">
@@ -924,11 +937,13 @@
             </div>
         </div>
     </div>
-
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <img id="lightboxImg" src="" alt="Screenshot enlarged">
+    </div>
     <script>
         // Initialize theme
         let savedTheme = 'light';
-        try { savedTheme = localStorage.getItem('theme') || 'light'; } catch (e) {}
+        try { savedTheme = localStorage.getItem('theme') || 'light'; } catch (e) { }
         document.documentElement.setAttribute('data-theme', savedTheme);
         document.querySelector('.theme-toggle').textContent = savedTheme === 'dark' ? '🌙' : '☀️';
         document.querySelectorAll('.game-card').forEach(card => card.addEventListener('keydown', e => {
@@ -939,7 +954,7 @@
             const current = document.documentElement.getAttribute('data-theme');
             const newTheme = current === 'dark' ? 'light' : 'dark';
             document.documentElement.setAttribute('data-theme', newTheme);
-            try { localStorage.setItem('theme', newTheme); } catch (e) {}
+            try { localStorage.setItem('theme', newTheme); } catch (e) { }
             document.querySelector('.theme-toggle').textContent = newTheme === 'dark' ? '🌙' : '☀️';
         }
 
@@ -955,40 +970,42 @@
                     "Images/BoneDash01 (3).jpg",
                 ],
                 info: `
-                            <h3>Info</h3>
-                            <ul>
-                            Bone Dash is a casual swipe and shoot game where you collect items on a circular board.
-                            Get the High Score and reach the top spot on the Leaderboard!
+                                <h3>Info</h3>
+                                <ul>
+                                Bone Dash is a casual swipe and shoot game where you collect items on a circular board.
+                                Get the High Score and reach the top spot on the Leaderboard!
 
-                            <li>Features :
-                            - A Wide Range of Characters - There are other Dog Breeds like Poodle, German Shepherd, even a Panda and Dragon!
-                            - Various Customizations - You can Customize your Character, Trail Effects and The Boards. The Bones on the board switch based on the character
-                            - Global Leaderboard - Like a bit of competition? Climb The Leaderboard then.
-                            - Great for Time Spending - On a Flight or Train Journey? Open Up the Game and start Dashing!
-                            - No Forced Ads (Except Banner)</li>
-                            <li> Game Link - <a href="https://play.google.com/store/apps/details?id=com.CocoStudio.BashDash" target="_blank" rel="noopener" onclick="event.stopPropagation()">Playstore</a> </li>
-                            </ul>
-                        `
+                                <li>Features :
+                                - A Wide Range of Characters - There are other Dog Breeds like Poodle, German Shepherd, even a Panda and Dragon!
+                                - Various Customizations - You can Customize your Character, Trail Effects and The Boards. The Bones on the board switch based on the character
+                                - Global Leaderboard - Like a bit of competition? Climb The Leaderboard then.
+                                - Great for Time Spending - On a Flight or Train Journey? Open Up the Game and start Dashing!
+                                - No Forced Ads (Except Banner)</li>
+                                <li> Game Link - <a href="https://play.google.com/store/apps/details?id=com.CocoStudio.BashDash" target="_blank" rel="noopener" onclick="event.stopPropagation()">Playstore</a> </li>
+                                </ul>
+                            `
             },
             game2: {
                 title: "Basics",
                 description: "A casual game which focuses on common game mechanics and has a minimalist design approach.",
                 trailer: "https://youtu.be/Z-oGwXdzDMQ?si=ICPnKNnH4xSsYWRK",
                 photos: [
-                    "https://via.placeholder.com/400x300/ff6b6b/ffffff?text=Block-By-Block+Puzzle",
-                    "https://via.placeholder.com/400x300/4ecdc4/ffffff?text=Block-By-Block+Assembly",
-                    "https://via.placeholder.com/400x300/45b7d1/ffffff?text=Block-By-Block+Free+Mode",
-                    "https://via.placeholder.com/400x300/f7dc6f/ffffff?text=Block-By-Block+Levels"
+                    "Images/Screenshots/BASICS Screenshot 1.jpg",
+                    "Images/Screenshots/BASICS Screenshot 2.jpg",
+                    "Images/Screenshots/BASICS Screenshot 3.jpg",
+                    "Images/Screenshots/BASICS Screenshot 4.jpg",
                 ],
                 info: `
-                            <h3>Info</h3>
-                            <h3>Features</h3>
-                            <ul>
-                                <li>- Uninterrupted Play - No Ads or In-App purchases</li>
-                                <li>- Diverse mechanics - The game features various mechanics each differing from one another creating diverse gameplay</li>
-                                <li>- Simplistic Vision - The game stays consistent with its minimalist theme</li>
-                            </ul>
-                        `
+                                <h3>Info</h3>
+                                <ul>
+                                The game teaches the basics used in a lot of game titles featuring 5 different mechanics spread across 50 levels with 10 levels per mechanic. This game is perfect if you want the feeling of finally finishing a mobile game instead of constant loops of rewards.
+                                <h3>Features</h3>
+                                <ul>
+                                    <li>- Uninterrupted Play - No Ads or In-App purchases</li>
+                                    <li>- Diverse mechanics - The game features various mechanics each differing from one another creating diverse gameplay</li>
+                                    <li>- Simplistic Vision - The game stays consistent with its minimalist theme</li>
+                                </ul>
+                            `
             },
             game3: {
                 title: "Block-By-Block",
@@ -1001,17 +1018,17 @@
                     "https://via.placeholder.com/400x300/f7dc6f/ffffff?text=Block-By-Block+Levels"
                 ],
                 info: `
-                            <h3>Theme</h3>
-                            <p>Assemble</p>
-                            <h3>Features</h3>
-                            <ul>
-                                <li>Find pentomino tiles</li>
-                                <li>Assemble broken puzzle hearts</li>
-                                <li>Unlock Free Mode</li>
-                                <li>Pixel Art Style</li>
-                                <li>Made with Godot</li>
-                            </ul>
-                        `
+                                <h3>Theme</h3>
+                                <p>Assemble</p>
+                                <h3>Features</h3>
+                                <ul>
+                                    <li>Find pentomino tiles</li>
+                                    <li>Assemble broken puzzle hearts</li>
+                                    <li>Unlock Free Mode</li>
+                                    <li>Pixel Art Style</li>
+                                    <li>Made with Godot</li>
+                                </ul>
+                            `
             },
             game4: {
                 title: "Cosmic Cosmo",
@@ -1024,15 +1041,15 @@
                     "https://via.placeholder.com/400x300/6c5ce7/ffffff?text=Cosmic+Cosmo+Gameplay"
                 ],
                 info: `
-                            <h3>Story</h3>
-                            <p>Cosmo is sent on a lunar research mission but crashes landing. Help him collect all scattered ship parts!</p>
-                            <h3>Controls</h3>
-                            <ul>
-                                <li>LMB - Move</li>
-                                <li>RMB - Shoot</li>
-                                <li>MMB - Events</li>
-                            </ul>
-                        `
+                                <h3>Story</h3>
+                                <p>Cosmo is sent on a lunar research mission but crashes landing. Help him collect all scattered ship parts!</p>
+                                <h3>Controls</h3>
+                                <ul>
+                                    <li>LMB - Move</li>
+                                    <li>RMB - Shoot</li>
+                                    <li>MMB - Events</li>
+                                </ul>
+                            `
             },
             game5: {
                 title: "Memorophilia",
@@ -1045,15 +1062,15 @@
                     "https://via.placeholder.com/400x300/0984e3/ffffff?text=Memorophilia+Memory"
                 ],
                 info: `
-                            <h3>Genre</h3>
-                            <p>Memory Puzzle</p>
-                            <h3>Features</h3>
-                            <ul>
-                                <li>Progressive difficulty</li>
-                                <li>Brain training mechanics</li>
-                                <li>Cognitive skill development</li>
-                            </ul>
-                        `
+                                <h3>Genre</h3>
+                                <p>Memory Puzzle</p>
+                                <h3>Features</h3>
+                                <ul>
+                                    <li>Progressive difficulty</li>
+                                    <li>Brain training mechanics</li>
+                                    <li>Cognitive skill development</li>
+                                </ul>
+                            `
             },
             game6: {
                 title: "Block-By-Block 3D",
@@ -1066,15 +1083,15 @@
                     "https://via.placeholder.com/400x300/26de81/ffffff?text=Block-3D+Visuals"
                 ],
                 info: `
-                            <h3>Genre</h3>
-                            <p>3D Puzzle Platformer</p>
-                            <h3>Features</h3>
-                            <ul>
-                                <li>Full 3D environments</li>
-                                <li>Enhanced assembly mechanics</li>
-                                <li>Beautiful 3D graphics</li>
-                            </ul>
-                        `
+                                <h3>Genre</h3>
+                                <p>3D Puzzle Platformer</p>
+                                <h3>Features</h3>
+                                <ul>
+                                    <li>Full 3D environments</li>
+                                    <li>Enhanced assembly mechanics</li>
+                                    <li>Beautiful 3D graphics</li>
+                                </ul>
+                            `
             },
             game7: {
                 title: "Magic 2048",
@@ -1087,15 +1104,15 @@
                     "https://via.placeholder.com/400x300/2ecc71/ffffff?text=Magic+2048+Magic"
                 ],
                 info: `
-                            <h3>Genre</h3>
-                            <p>Puzzle Game</p>
-                            <h3>Features</h3>
-                            <ul>
-                                <li>2048 puzzle mechanics</li>
-                                <li>Magical visual effects</li>
-                                <li>Spellcasting abilities</li>
-                            </ul>
-                        `
+                                <h3>Genre</h3>
+                                <p>Puzzle Game</p>
+                                <h3>Features</h3>
+                                <ul>
+                                    <li>2048 puzzle mechanics</li>
+                                    <li>Magical visual effects</li>
+                                    <li>Spellcasting abilities</li>
+                                </ul>
+                            `
             }
         };
 
@@ -1109,15 +1126,20 @@
 
             const photosGrid = document.getElementById('photosGrid');
             photosGrid.innerHTML = game.photos.map(photo =>
-                `<div class="photo-item"><img src="${photo}" alt="Game screenshot"></div>`
-            ).join('');
+                `<div class="photo-item"><img src="${photo}" alt="Game screenshot" onclick="openLightbox(this.src)"></div>`).join('');
 
             document.getElementById('infoContent').innerHTML = game.info;
 
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-
+        function openLightbox(src) {
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightbox').classList.add('active');
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
         function closeModal() {
             const modal = document.getElementById('gameModal');
             modal.classList.remove('active');
@@ -1134,8 +1156,10 @@
 
         window.onclick = function (event) {
             const modal = document.getElementById('gameModal');
-            if (event.target === modal) closeModal();
-        }
+            if (event.key === 'Escape') {
+                if (document.getElementById('lightbox').classList.contains('active')) closeLightbox();
+                else closeModal();
+            }        }
 
         document.addEventListener('keydown', function (event) {
             if (event.key === 'Escape') closeModal();
