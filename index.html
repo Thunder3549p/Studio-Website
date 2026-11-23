@@ -459,7 +459,9 @@
             }
 
         .photos-grid {
+            display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
         }
 
         .photo-item {
@@ -468,12 +470,16 @@
             align-items: center;
             justify-content: center;
             cursor: zoom-in;
+            overflow: hidden;
+            border-radius: 10px;
+            background: var(--bg-secondary);
         }
 
             .photo-item img {
+                width: 100%;
+                height: 100%;
                 object-fit: contain;
             }
-
         .lightbox {
             display: none;
             position: fixed;
@@ -963,7 +969,7 @@
             game1: {
                 title: "Bone Dash",
                 description: "A Swipe & Shoot casual Mobile game",
-                trailer: "https://youtu.be/zquPxrsPvBY?si=UTUjuE3udfulyGH_",
+                trailer: "https://www.youtube.com/embed/zquPxrsPvBY?si=6PEEx8YC0ZycKHt6&amp;controls=0",
                 photos: [
                     "Images/BoneDash01 (1).jpg",
                     "Images/BoneDash01 (2).jpg",
@@ -988,7 +994,7 @@
             game2: {
                 title: "Basics",
                 description: "A casual game which focuses on common game mechanics and has a minimalist design approach.",
-                trailer: "https://youtu.be/Z-oGwXdzDMQ?si=ICPnKNnH4xSsYWRK",
+                trailer: "https://www.youtube.com/embed/Z-oGwXdzDMQ?si=KF-rV3vPvzpN30sj&amp;controls=0",
                 photos: [
                     "Images/Screenshots/BASICS Screenshot 1.jpg",
                     "Images/Screenshots/BASICS Screenshot 2.jpg",
