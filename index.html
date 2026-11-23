@@ -1,10 +1,13 @@
-﻿
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coco Studio - Indie Game Studio</title>
+    <meta name="description" content="Coco Studio is an indie game studio in India. Human-made games for PC and Android, with no generative AI.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -669,13 +672,83 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* ===== Design refresh: handmade indie look ===== */
+        html { scroll-padding-top: 72px; }
+        html[data-theme="light"] {
+            --bg-primary: #fff4db; --bg-secondary: #ffe9bd; --bg-tertiary: #fff4db;
+            --text-primary: #2b1d10; --text-secondary: #5e4630;
+            --border-color: #e3c98f; --line: #2b1d10; --card-bg: #fffaf0;
+            --accent: #faba47; --accent-text: #8a5a1c; --shadow-solid: #2b1d10;
+        }
+        html[data-theme="dark"] {
+            --bg-primary: #1c140d; --bg-secondary: #261b11; --bg-tertiary: #1c140d;
+            --text-primary: #fff4db; --text-secondary: #d9c6a3;
+            --border-color: #3a2b1c; --line: #6b5238; --card-bg: #2e2216;
+            --accent: #faba47; --accent-text: #faba47; --shadow-solid: #faba47;
+        }
+        :focus-visible { outline: 3px solid var(--accent-text); outline-offset: 3px; }
+        body { font-family: 'Nunito', 'Segoe UI', sans-serif; font-size: 1.05rem; padding-top: 72px; }
+        h1, h2, h3, .logo { font-family: 'Fredoka', 'Segoe UI', sans-serif; }
+
+        header { height: 72px; padding: 0 2rem; display: flex; align-items: center; border-bottom: 2px solid var(--line); }
+        header nav { width: 100%; }
+        .logo { display: flex; align-items: center; gap: 0.6rem; font-size: 1.5rem; color: var(--accent-text); }
+        .logo-image { height: 36px; width: auto; }
+        nav a { font-weight: 700; }
+        nav a:hover { color: var(--accent-text); text-decoration: underline wavy; text-underline-offset: 6px; }
+        .theme-toggle { width: 44px; height: 44px; padding: 0; font-size: 1.2rem; background: var(--accent); color: #2b1d10; border: 2px solid var(--line); border-radius: 50%; }
+
+        .hero { margin-top: 0; padding: 6rem 2rem 7rem; background: radial-gradient(color-mix(in srgb, var(--line) 28%, transparent) 1.5px, transparent 2px) 0 0 / 24px 24px, var(--bg-primary); }
+        .hero h1 { font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.1; max-width: 16ch; margin: 0 auto 1.5rem; }
+        .pledge { display: inline-block; padding: 0.4rem 1.2rem; margin-bottom: 1.5rem; border: 2px dashed var(--accent-text); border-radius: 50px; color: var(--accent-text); background: var(--bg-primary); font-weight: 800; letter-spacing: 0.05em; }
+
+        .cta-button, .submit-btn, .newsletter-btn, .game-links a {
+            background: var(--accent); color: #2b1d10; border: 2px solid var(--line);
+            box-shadow: 3px 3px 0 var(--shadow-solid); font-family: 'Fredoka', sans-serif; font-weight: 700;
+        }
+        .cta-button:hover, .submit-btn:hover, .newsletter-btn:hover, .game-links a:hover {
+            transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--shadow-solid); opacity: 1;
+        }
+        .about h2, .games h2, .contact h2, .modal-header h2, .info-content h3, .newsletter-section h3 { color: var(--accent-text); }
+        .about p { max-width: 60ch; }
+
+        .pledge-section { padding: 5rem 2rem; background: var(--accent); color: #2b1d10; border-block: 2px solid var(--line); }
+        .pledge-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; gap: 3rem; }
+        .seal { width: 190px; flex: none; transform: rotate(-8deg); }
+        .pledge-section h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.15; margin-bottom: 1rem; }
+        .pledge-section p { font-size: 1.15rem; max-width: 52ch; }
+
+        .games-grid { gap: 2.5rem; padding: 0.5rem; }
+        .game-card { display: flex; flex-direction: column; background: var(--card-bg); border: 2px solid var(--line); border-radius: 14px 18px 14px 20px; box-shadow: 6px 6px 0 var(--shadow-solid); transform: rotate(var(--tilt, 0deg)); transition: transform 0.2s, box-shadow 0.2s; }
+        .game-card:nth-child(odd) { --tilt: -1deg; }
+        .game-card:nth-child(even) { --tilt: 1deg; }
+        .game-card:hover, .game-card:focus-visible { transform: rotate(0deg) translate(-2px, -2px); box-shadow: 9px 9px 0 var(--shadow-solid); }
+        .game-image-1, .game-image-2 { aspect-ratio: 16 / 10; border-bottom: 2px solid var(--line); background: radial-gradient(#2b1d10 1.5px, transparent 2px) 0 0 / 18px 18px, var(--accent); }
+        .game-image-1 { background: url("Images/DebuggerThumbnail.png") center / cover no-repeat, var(--accent); }
+        .badge { background: transparent; border: 1.5px solid var(--line); color: var(--text-primary); font-weight: 700; }
+
+        .form-group input, .form-group textarea, .newsletter-form input { border: 2px solid var(--line); border-radius: 10px; }
+        .form-group input:focus, .form-group textarea:focus, .newsletter-form input:focus { border-color: var(--accent-text); box-shadow: 3px 3px 0 var(--accent); }
+        .newsletter-section { border: 2px dashed var(--line); }
+        .modal-content { border: 2px solid var(--line); box-shadow: 8px 8px 0 var(--shadow-solid); }
+        footer { border-top: 2px solid var(--line); }
+
+        @media (max-width: 600px) {
+            header { padding: 0 1rem; }
+            .logo span { display: none; }
+            nav ul { gap: 0.8rem; font-size: 0.9rem; }
+            .pledge-inner { flex-direction: column; text-align: center; gap: 1.5rem; }
+            .seal { width: 150px; }
+        }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
     </style>
 </head>
 <body>
     <header>
         <nav>
             <div class="logo">
-                <img src="Logos\Logo RE-Design Full Circle 32px.png" class="logo-image">
+                <img src="Logos/Logo RE-Design Full Circle 32px.png" class="logo-image" alt="">
                 <span>Coco Studio</span>
             </div>
             <ul>
@@ -684,25 +757,42 @@
                 <li><a href="#games">Games</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark</button>
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Switch light or dark theme">🌙</button>
         </nav>
     </header>
 
     <section class="hero" id="home">
-        <h1>Welcome to Coco Studio</h1>
+        <span class="pledge">✋ 100% Human-Made · No Generative AI</span>
+        <h1>Made by Hand, Not by Prompt</h1>
         <p>We develop creative games for PC and Android. Our main focus is on fresh new concepts which bring a new vibe to games. Stay tuned for further updates and many more games!</p>
         <a href="#games" class="cta-button">Explore Our Games</a>
     </section>
 
     <section class="about" id="about">
         <h2>About Us</h2>
-        <p>Founded by a student and named after his dog. the studio hopes to bring games that you can play and share with your families and get that childhood feeling. We are a strict No Generative AI Studio</p>
+        <p>Founded by a student and named after his dog. The studio hopes to bring games that you can play and share with your family and get that childhood feeling.</p>
+    </section>
+
+    <section class="pledge-section" id="pledge">
+        <div class="pledge-inner">
+            <svg class="seal" viewBox="0 0 200 200" role="img" aria-label="Human made, no generative AI seal">
+                <defs><path id="ring" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+                <circle cx="100" cy="100" r="96" fill="#fff4db" stroke="#2b1d10" stroke-width="4"/>
+                <circle cx="100" cy="100" r="62" fill="none" stroke="#2b1d10" stroke-width="2" stroke-dasharray="4 5"/>
+                <text font-family="Fredoka, sans-serif" font-size="15" font-weight="700" letter-spacing="2.5" fill="#2b1d10"><textPath href="#ring">HUMAN MADE · NO GENERATIVE AI · INDIE · </textPath></text>
+                <g fill="#2b1d10"><ellipse cx="100" cy="118" rx="20" ry="16"/><ellipse cx="72" cy="94" rx="8" ry="11"/><ellipse cx="91" cy="80" rx="8" ry="11"/><ellipse cx="109" cy="80" rx="8" ry="11"/><ellipse cx="128" cy="94" rx="8" ry="11"/></g>
+            </svg>
+            <div>
+                <h2>No generative AI in our games. Ever.</h2>
+                <p>No AI art, no AI music, no AI writing. Every character, sound, and level in a Coco Studio game was made by a person.</p>
+            </div>
+        </div>
     </section>
 
     <section class="games" id="games">
         <h2>Our Games</h2>
         <div class="games-grid">
-            <div class="game-card" onclick="openModal('game1')">
+            <div class="game-card" tabindex="0" role="button" onclick="openModal(\'game1\')">
                 <div class="game-image-1" data-title="Bone Dash">
                 </div>
                     <div class="game-info">
@@ -713,14 +803,14 @@
                             <span class="badge">Casual</span>
                         </div>
                         <div class="game-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.CocoStudio.BashDash" target="_blank">Playstore</a>
+                            <a href="https://play.google.com/store/apps/details?id=com.CocoStudio.BashDash" target="_blank" rel="noopener" onclick="event.stopPropagation()">Playstore</a>
                         </div>
                     </div>
                 </div>                    
-            <div class="game-card" onclick="openModal('game2')">
-                <div class="game-image-2" data-title="Bone Dash">
+            <div class="game-card" tabindex="0" role="button" onclick="openModal(\'game2\')">
+                <div class="game-image-2" data-title="Basics">
                 </div>
-]                    <div class="game-info">
+                    <div class="game-info">
                         <h3>Basics</h3>
                         <p>A level based basic game with multiple mechanics</p>
                         <div class="platform-badges">
@@ -728,12 +818,12 @@
                             <span class="badge">Casual</span>
                         </div>
                         <div class="game-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.CocoStudio.Basics" target="_blank">Playstore</a>
+                            <a href="https://play.google.com/store/apps/details?id=com.CocoStudio.Basics" target="_blank" rel="noopener" onclick="event.stopPropagation()">Playstore</a>
                         </div>
                     </div>
                 </div>
             <!--
-            <div class="game-card" onclick="openModal('game2')">
+            <div class="game-card" tabindex="0" role="button" onclick="openModal(\'game2\')">
                 <div class="game-image game-image-2" data-title="Block-By-Block"></div>
                 <div class="game-info">
                     <h3>Block-By-Block</h3>
@@ -747,7 +837,7 @@
                     </div>
                 </div>
             </div>
-            <div class="game-card" onclick="openModal('game5')">
+            <div class="game-card" tabindex="0" role="button" onclick="openModal(\'game5\')">
                 <div class="game-image game-image-5" data-title="Block-By-Block 3D"></div>
                 <div class="game-info">
                     <h3>Block-By-Block 3D</h3>
@@ -799,7 +889,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 Coco Studio. All rights reserved. Making games is our passion!</p>
+        <p>&copy; 2026 Coco Studio. Made by people in India. No generative AI.</p>
     </footer>
 
     <!-- Game Modal -->
@@ -811,14 +901,14 @@
                 <p id="modalGameDescription">Game description</p>
             </div>
             <div class="modal-tabs">
-                <button class="modal-tab active" onclick="switchTab('trailer')">Trailer</button>
-                <button class="modal-tab" onclick="switchTab('photos')">Screenshots</button>
-                <button class="modal-tab" onclick="switchTab('info')">Info</button>
+                <button class="modal-tab active" onclick="switchTab('trailer', this)">Trailer</button>
+                <button class="modal-tab" onclick="switchTab('photos', this)">Screenshots</button>
+                <button class="modal-tab" onclick="switchTab('info', this)">Info</button>
             </div>
             <div class="modal-body">
                 <div id="trailerTab" class="tab-content active">
                     <div class="video-container">
-                        <iframe id="trailerVideo" src=" autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe id="trailerVideo" src="" title="Game trailer" allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
                 <div id="photosTab" class="tab-content">
@@ -833,15 +923,20 @@
 
     <script>
         // Initialize theme
-        const savedTheme = localStorage.getItem('theme') || 'dark';
+        let savedTheme = 'light';
+        try { savedTheme = localStorage.getItem('theme') || 'light'; } catch (e) {}
         document.documentElement.setAttribute('data-theme', savedTheme);
+        document.querySelector('.theme-toggle').textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+        document.querySelectorAll('.game-card').forEach(card => card.addEventListener('keydown', e => {
+            if (e.target === card && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); card.click(); }
+        }));
 
         function toggleTheme() {
             const current = document.documentElement.getAttribute('data-theme');
             const newTheme = current === 'dark' ? 'light' : 'dark';
             document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            document.querySelector('.theme-toggle').textContent = newTheme === 'dark' ? '🌙 Dark' : '☀️ Light';
+            try { localStorage.setItem('theme', newTheme); } catch (e) {}
+            document.querySelector('.theme-toggle').textContent = newTheme === 'dark' ? '🌙' : '☀️';
         }
 
         // Game data
@@ -867,7 +962,7 @@
                             - Global Leaderboard - Like a bit of competition? Climb The Leaderboard then.
                             - Great for Time Spending - On a Flight or Train Journey? Open Up the Game and start Dashing!
                             - No Forced Ads (Except Banner)</li>
-                            <li> Game Link - <a href="https://play.google.com/store/apps/details?id=com.CocoStudio.BashDash" target="_blank">Playstore</a> </li>
+                            <li> Game Link - <a href="https://play.google.com/store/apps/details?id=com.CocoStudio.BashDash" target="_blank" rel="noopener" onclick="event.stopPropagation()">Playstore</a> </li>
                             </ul>
                         `
             },
@@ -1006,10 +1101,10 @@
             document.getElementById('trailerVideo').src = '';
         }
 
-        function switchTab(tabName) {
+        function switchTab(tabName, btn) {
             document.querySelectorAll('.modal-tab').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            event.target.classList.add('active');
+            btn.classList.add('active');
             document.getElementById(tabName + 'Tab').classList.add('active');
         }
 
