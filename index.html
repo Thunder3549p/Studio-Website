@@ -94,23 +94,6 @@
             nav a:hover {
                 color: var(--primary-color);
             }
-
-        .theme-toggle {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s;
-        }
-
-            .theme-toggle:hover {
-                opacity: 0.9;
-                transform: scale(1.05);
-            }
-
         /* Hero */
         .hero {
             margin-top: 80px;
@@ -781,7 +764,6 @@
                 <li><a href="#games">Games</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Switch light or dark theme">🌙</button>
         </nav>
     </header>
 
@@ -947,22 +929,17 @@
         <img id="lightboxImg" src="" alt="Screenshot enlarged">
     </div>
     <script>
-        // Initialize theme
-        let savedTheme = 'light';
-        try { savedTheme = localStorage.getItem('theme') || 'light'; } catch (e) { }
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+        function applyTheme() {
+            document.documentElement.setAttribute('data-theme', systemDark.matches ? 'dark' : 'light');
+        }
+        applyTheme();
+        systemDark.addEventListener('change', applyTheme);
         document.documentElement.setAttribute('data-theme', savedTheme);
         document.querySelector('.theme-toggle').textContent = savedTheme === 'dark' ? '🌙' : '☀️';
         document.querySelectorAll('.game-card').forEach(card => card.addEventListener('keydown', e => {
             if (e.target === card && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); card.click(); }
         }));
-
-        function toggleTheme() {
-            const current = document.documentElement.getAttribute('data-theme');
-            const newTheme = current === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', newTheme);
-            try { localStorage.setItem('theme', newTheme); } catch (e) { }
-            document.querySelector('.theme-toggle').textContent = newTheme === 'dark' ? '🌙' : '☀️';
-        }
 
         // Game data
         const gameData = {
